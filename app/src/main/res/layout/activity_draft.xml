@@ -1,0 +1,24 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.beak.bweibo.activity.DraftActivity">
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/draft_recycler_view"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        />
+    <Button
+        android:id="@+id/draft_debug_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="add"
+        />
+    <TextView
+        android:id="@+id/draft_debug_count"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/draft_debug_btn"
+        android:textColor="@color/textColorPrimaryDark"
+        />
+</RelativeLayout>

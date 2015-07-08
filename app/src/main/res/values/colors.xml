@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="windowBackground">#dedede</color>
+    <color name="colorPrimary">#505050</color>
+    <color name="colorPrimaryDark">#5f5f5f</color>
+
+    <color name="textColorPrimary">#f0f0f0</color>
+    <color name="textColorSecondary">#f0f0f0</color>
+    <color name="textColorPrimaryDark">#505050</color>
+    <color name="textColorSecondaryDark">#707070</color>
+    <color name="textColorLink">#668866</color>
+
+    <color name="colorBackgroundHint">#f0f0f0</color>
+</resources>

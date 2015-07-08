@@ -1,0 +1,94 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Base.Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowBackground">@color/windowBackground</item>
+        <item name="android:colorBackground">@color/colorPrimaryDark</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/textColorSecondaryDark</item>
+        <item name="android:textColorPrimary">@color/textColorPrimary</item>
+        <item name="android:textColorSecondary">@color/textColorSecondary</item>
+        <item name="android:textColorSecondaryInverse">@android:color/holo_orange_light</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:textColorLink">@color/textColorLink</item>
+
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="toolbarStyle">
+        <item name="android:background">@color/colorPrimary</item>
+    </style>
+
+    <style name="imageItemStyle">
+        <item name="android:layout_width">@dimen/image_multi_image_width</item>
+        <item name="android:layout_height">@dimen/image_multi_image_height</item>
+        <item name="android:scaleType">centerCrop</item>
+        <item name="android:visibility">gone</item>
+        <item name="android:layout_margin">@dimen/std_size_2</item>
+    </style>
+    <style name="statusItemContainerStyle">
+        <item name="android:id">@id/status_container</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:background">@drawable/status_bg</item>
+        <item name="android:paddingLeft">@dimen/std_size_16</item>
+        <item name="android:paddingRight">@dimen/std_size_16</item>
+        <item name="android:paddingTop">@dimen/std_size_8</item>
+        <item name="android:paddingBottom">@dimen/std_size_8</item>
+    </style>
+    <style name="statusTextStyle">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/std_size_4</item>
+        <item name="android:layout_marginBottom">@dimen/std_size_4</item>
+        <item name="android:textColor">@color/textColorPrimaryDark</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+    <style name="statusTextRepostStyle">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/std_size_4</item>
+        <item name="android:layout_marginBottom">@dimen/std_size_4</item>
+        <item name="android:textColor">@color/textColorSecondaryDark</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="statusRepostContainerStyle">
+        <item name="android:padding">@dimen/std_size_4</item>
+        <item name="android:background">@drawable/status_repost_bg</item>
+    </style>
+    <style name="statusControlStyle">
+        <item name="android:layout_marginTop">@dimen/std_size_8</item>
+    </style>
+    <style name="statusControlBtnStyle">
+        <item name="android:layout_width">@dimen/std_image_btn_size_middle</item>
+        <item name="android:layout_height">@dimen/std_image_btn_size_middle</item>
+        <item name="android:background">@drawable/btn_bg_round</item>
+        <item name="android:padding">@dimen/std_size_8</item>
+        <item name="android:layout_marginLeft">@dimen/std_size_16</item>
+    </style>
+    <style name="statusControlTextStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_marginLeft">@dimen/std_size_4</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textColor">@color/textColorSecondaryDark</item>
+    </style>
+    <style name="statusImageMarginStyle">
+        <item name="android:layout_margin">@dimen/std_size_8</item>
+    </style>
+
+    <style name="commentItemStyle" parent="@style/statusItemContainerStyle">
+    </style>
+    <style name="commentTextStyle" parent="@style/statusTextStyle">
+    </style>
+    <style name="commentControlBtnStyle" parent="@style/statusControlBtnStyle">
+    </style>
+    <style name="commentControlTextStyle" parent="@style/statusControlTextStyle"></style>
+
+    <style name="dockBarItemStyle">
+    </style>
+</resources>

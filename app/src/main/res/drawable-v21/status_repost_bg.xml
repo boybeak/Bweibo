@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="#c0c0c0"
+    >
+    <item android:drawable="@drawable/shape_status_repost_bg_nor"/>
+</ripple>

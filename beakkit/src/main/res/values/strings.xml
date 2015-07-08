@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">BeakKit</string>
+
+    <string name="debug_clear">clear</string>
+    <string name="debug_copy_all">copy all</string>
+    <string name="debug_save_all">save all</string>
+    <string name="debug_last_page">last page</string>
+    <string name="debug_next_page">next page</string>
+    <string name="debug_start">start</string>
+    <string name="debug_end">end</string>
+    <string name="debug_copy_success">copied success</string>
+</resources>

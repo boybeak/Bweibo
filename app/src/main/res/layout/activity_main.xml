@@ -1,0 +1,27 @@
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    >
+    <fragment
+        android:id="@+id/main_status_list_fragment"
+        android:name="com.beak.bweibo.fragment.StatusListFragment"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"/>
+    <fragment
+        android:id="@+id/main_user_fragment"
+        android:name="com.beak.bweibo.fragment.MySelfFragment"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="start"
+        />
+    <fragment
+        android:id="@+id/main_debug_fragment"
+        android:name="com.beak.beakkit.debug.DebugFragment"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="end"
+        />
+</android.support.v4.widget.DrawerLayout>

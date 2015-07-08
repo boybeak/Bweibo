@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">B\'Weibo</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_publish">Publish</string>
+
+    <string name="footer_tip_success">loading completed</string>
+    <string name="footer_tip_failed">loading failed</string>
+
+    <string name="publish_empty_content">share picture</string>
+    <string name="publish_repost_empty_content">repost weibo</string>
+
+    <string name="time_future">future</string>
+    <string name="time_just_now">just now</string>
+    <string name="time_minutes_ago">%1$d minusts ago</string>
+
+    <string name="menu_draft">Drafts</string>
+    <string name="menu_settings">Settings</string>
+    <string name="menu_logout">Logout</string>
+    <string name="menu_web_share">Share</string>
+    <string name="menu_web_to_browser">In Other Browser</string>
+    <string name="menu_web_copy_url">Copy Url</string>
+    <string name="menu_status_item_collect">Collect</string>
+
+    <string name="toast_max_image_count_reached">max count %1$d has reached</string>
+    <string name="toast_publish_success">publish success</string>
+    <string name="toast_publish_failed">publish failed, check form draft box</string>
+    <string name="toast_publish_empty_content">content shouldn\'t be null</string>
+    <string name="toast_publish_repost_success">repost success</string>
+    <string name="toast_publish_repost_failed">repost failed, check from draft box</string>
+    <string name="toast_publish_comment_success">comment success</string>
+    <string name="toast_publish_comment_failed">comment failed, check from draft box</string>
+    <string name="toast_publish_comment_empty_content">content shouldn\'t be null</string>
+    <string name="toast_web_copy_url_success">Copy Success</string>
+    <string name="toast_no_application_found_to_handle_this_intent">no application can handle this</string>
+
+    <string name="hint_publish_input_et">Say something to the world...</string>
+
+    <string name="title_activity_hello">HelloActivity</string>
+    <string name="title_activity_main">HomePage</string>
+    <string name="title_activity_publish">Publish</string>
+
+    <string name="title_activity_status_detail">StatusDetailActivity</string>
+    <string name="title_activity_image_select">ImageSelectActivity</string>
+    <string name="title_activity_user">UserActivity</string>
+    <string name="title_activity_web">WebActivity</string>
+    <string name="title_activity_at">AtActivity</string>
+    <string name="title_activity_topic">TopicActivity</string>
+    <string name="title_activity_draft">DraftActivity</string>
+    <string name="title_activity_image_preview">ImagePreviewActivity</string>
+</resources>

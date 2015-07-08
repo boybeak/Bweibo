@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+    <ImageView
+        android:id="@+id/control_repost"
+        android:src="@drawable/ic_share_variant"
+        android:layout_toLeftOf="@+id/control_repost_count"
+        style="@style/statusControlBtnStyle"
+        />
+    <TextView
+        android:id="@+id/control_repost_count"
+        android:layout_toLeftOf="@+id/control_comment"
+        style="@style/statusControlTextStyle"
+        />
+    <ImageView
+        android:id="@+id/control_comment"
+        android:src="@drawable/ic_comment_text_outline"
+        android:layout_toLeftOf="@+id/control_comment_count"
+        style="@style/statusControlBtnStyle"
+        />
+    <TextView
+        android:id="@+id/control_comment_count"
+        android:layout_toLeftOf="@+id/control_support"
+        style="@style/statusControlTextStyle"
+        />
+    <ImageView
+        android:id="@+id/control_support"
+        android:src="@drawable/ic_thumb_up_outline"
+        android:layout_toLeftOf="@+id/control_support_count"
+        style="@style/statusControlBtnStyle"
+        />
+    <TextView
+        android:id="@+id/control_support_count"
+        android:layout_toLeftOf="@+id/control_more"
+        style="@style/statusControlTextStyle"
+        />
+    <ImageView
+        android:id="@+id/control_more"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/ic_dots_vertical"
+        style="@style/statusControlBtnStyle"
+        />
+
+</RelativeLayout>

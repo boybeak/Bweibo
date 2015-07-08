@@ -1,0 +1,23 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.beak.bweibo.activity.common.WebActivity">
+    <item
+        android:id="@+id/web_share"
+        android:title="@string/menu_web_share"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_share"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/web_to_browser"
+        android:title="@string/menu_web_to_browser"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_web"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/web_copy_url"
+        android:title="@string/menu_web_copy_url"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_content_copy"
+        app:showAsAction="never" />
+</menu>

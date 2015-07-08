@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/statusItemContainerStyle">
+    <include
+        android:id="@+id/status_user_part"
+        layout="@layout/layout_status_user_part"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        />
+    <TextView
+        android:id="@+id/status_text"
+        style="@style/statusTextStyle"
+        android:layout_below="@+id/status_user_part"
+        />
+    <RelativeLayout
+        android:id="@+id/status_repost_container"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/status_text"
+        style="@style/statusRepostContainerStyle"
+        >
+        <include
+            android:id="@+id/status_text_repost_part"
+            layout="@layout/layout_text_repost_part"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            />
+        <include
+            android:id="@+id/status_multi_image_repost_part"
+            layout="@layout/layout_multi_image_part"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/status_text_repost_part"
+            style="@style/statusImageMarginStyle"
+            />
+    </RelativeLayout>
+
+    <include
+        android:id="@+id/status_control_part"
+        layout="@layout/layout_status_control_part"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/status_repost_container"
+        style="@style/statusControlStyle"
+        />
+</RelativeLayout>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.NavigationView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/myself_navigationview"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    app:headerLayout="@layout/layout_myself_header"
+    app:menu="@menu/menu_myself"
+    app:itemBackground="@android:color/transparent"
+    app:itemTextColor="@color/textColorPrimaryDark"
+    app:itemIconTint="@color/colorPrimary">
+
+</android.support.design.widget.NavigationView>

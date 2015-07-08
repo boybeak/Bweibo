@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/navigation_draft"
+            android:checked="true"
+            android:icon="@drawable/ic_delete_variant"
+            android:title="@string/menu_draft"/>
+        <item
+            android:id="@+id/navigation_settings"
+            android:icon="@drawable/ic_settings"
+            android:title="@string/menu_settings"/>
+        <item
+            android:id="@+id/navigation_logout"
+            android:checked="true"
+            android:icon="@drawable/ic_logout"
+            android:title="@string/menu_logout"/>
+        <item
+            android:id="@+id/navigation_item_4"
+            android:icon="@mipmap/ic_launcher"
+            android:title="@string/hello_world"/>
+        <item
+            android:id="@+id/navigation_item_5"
+            android:checked="true"
+            android:icon="@mipmap/ic_launcher"
+            android:title="@string/app_name"/>
+        <item
+            android:id="@+id/navigation_item_6"
+            android:icon="@mipmap/ic_launcher"
+            android:title="@string/hello_world"/>
+    </group>
+</menu>

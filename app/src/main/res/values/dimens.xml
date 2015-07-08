@@ -1,0 +1,56 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+
+    <dimen name="std_size_2">2dp</dimen>
+    <dimen name="std_size_4">4dp</dimen>
+    <dimen name="std_size_8">8dp</dimen>
+    <dimen name="std_size_12">12dp</dimen>
+    <dimen name="std_size_16">16dp</dimen>
+    <dimen name="std_size_20">20dp</dimen>
+    <dimen name="std_size_24">24dp</dimen>
+    <dimen name="std_size_28">28dp</dimen>
+    <dimen name="std_size_32">32dp</dimen>
+    <dimen name="std_size_36">36dp</dimen>
+    <dimen name="std_size_40">40dp</dimen>
+    <dimen name="std_size_44">44dp</dimen>
+    <dimen name="std_size_48">48dp</dimen>
+    <dimen name="std_size_52">52dp</dimen>
+    <dimen name="std_size_56">56dp</dimen>
+    <dimen name="std_size_60">60dp</dimen>
+    <dimen name="std_size_64">64dp</dimen>
+    <dimen name="std_size_68">68dp</dimen>
+    <dimen name="std_size_72">72dp</dimen>
+
+    <dimen name="std_text_size_body1">16sp</dimen>
+    <dimen name="std_text_size_body2">15sp</dimen>
+    <dimen name="std_text_size_caption">14sp</dimen>
+
+
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="profile_size_in_list">40dp</dimen>
+    <dimen name="profile_size">64dp</dimen>
+
+    <dimen name="image_single_width">120dp</dimen>e
+    <dimen name="image_single_height">180dp</dimen>
+
+    <dimen name="image_multi_image_width">90dp</dimen>
+    <dimen name="image_multi_image_height">90dp</dimen>
+
+    <dimen name="std_image_btn_size_mini">18dp</dimen>
+    <dimen name="std_image_btn_size_small">24dp</dimen>
+    <dimen name="std_image_btn_size_middle">32dp</dimen>
+
+    <dimen name="status_item_margin_left">0dp</dimen><!--@dimen/std_size_16-->
+    <dimen name="status_item_margin_top">@dimen/std_size_8</dimen>
+    <dimen name="status_item_margin_right">0dp</dimen>
+    <dimen name="status_item_margin_bottom">@dimen/std_size_8</dimen>
+    <dimen name="status_item_elevation">@dimen/std_size_2</dimen>
+
+    <dimen name="comment_item_margin_left">0dp</dimen>
+    <dimen name="comment_item_margin_top">1dp</dimen>
+    <dimen name="comment_item_margin_right">0dp</dimen>
+    <dimen name="comment_item_margin_bottom">1dp</dimen>
+    <dimen name="comment_item_elevation">@dimen/std_size_2</dimen>
+</resources>

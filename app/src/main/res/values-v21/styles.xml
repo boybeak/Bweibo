@@ -1,0 +1,21 @@
+<resources>
+
+    <style name="toolbarStyle">
+        <item name="android:background">?android:attr/colorPrimary</item>
+    </style>
+    <style name="statusItemContainerStyle">
+        <item name="android:id">@id/status_container</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:background">@drawable/status_bg</item>
+        <item name="android:paddingLeft">@dimen/std_size_16</item>
+        <item name="android:paddingRight">@dimen/std_size_16</item>
+        <item name="android:paddingTop">@dimen/std_size_8</item>
+        <item name="android:paddingBottom">@dimen/std_size_8</item>
+        <item name="android:elevation">@dimen/status_item_elevation</item>
+    </style>
+
+    <style name="dockBarItemStyle">
+    </style>
+
+</resources>
