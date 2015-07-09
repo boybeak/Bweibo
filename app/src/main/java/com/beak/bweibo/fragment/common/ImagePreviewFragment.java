@@ -9,6 +9,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.beak.bweibo.R;
 import com.beak.bweibo.activity.ToolbarActivity;
@@ -38,6 +40,10 @@ public class ImagePreviewFragment extends Fragment implements
 
     @InjectView(R.id.preview_image)
     PhotoView mPreviewPv = null;
+    @InjectView(R.id.preview_loading_progress_bar)
+    ProgressBar mPreviewProgressBar;
+    @InjectView(R.id.preview_loading_tip)
+    TextView mPreviewTip;
 
     private File mBmpFile = null;
 
@@ -97,6 +103,16 @@ public class ImagePreviewFragment extends Fragment implements
                         public void onSuccess(ResponseInfo<File> responseInfo) {
                             mBmpFile = responseInfo.result;
                             displayImage(mBmpFile);
+                            mPreviewProgressBar.setVisibility(View.GONE);
+                            mPreviewTip.setVisibility(View.GONE);
+                        }
+
+                        @Override
+                        public void onLoading(long total, long current, boolean isUploading) {
+                            super.onLoading(total, current, isUploading);
+                            int progress = (int)(current * 100 / total);
+                            mPreviewProgressBar.setProgress(progress);
+                            mPreviewTip.setText(progress + "%");
                         }
 
                         @Override
