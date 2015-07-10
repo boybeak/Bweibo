@@ -44,6 +44,17 @@
             android:paddingBottom="@dimen/std_size_8"
             style="@style/dockBarItemStyle"
             />
+        <ImageView
+            android:id="@+id/publish_at"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_at"
+            android:background="@drawable/status_repost_bg"
+            android:layout_weight="1"
+            android:paddingTop="@dimen/std_size_8"
+            android:paddingBottom="@dimen/std_size_8"
+            style="@style/dockBarItemStyle"
+            />
     </LinearLayout>
     <!--<GridLayout
         android:id="@+id/publish_menu_container"
