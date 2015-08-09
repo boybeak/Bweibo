@@ -22,6 +22,6 @@ public class StatusMultiImageRepostHolder extends StatusRepostHolder {
     @Override
     public void bindData(Context context, StatusDelegate delegate) {
         super.bindData(context, delegate);
-        fillStatusImageGridPart(context, repostMultiImageGridLayout, delegate.getSource().getRetweeted_status().getPic_urls());
+        fillStatusImageGridPart(context, repostMultiImageGridLayout, delegate.getSource().retweeted_status.pic_urls);
     }
 }

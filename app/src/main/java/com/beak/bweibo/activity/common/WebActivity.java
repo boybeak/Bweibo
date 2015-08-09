@@ -3,6 +3,8 @@ package com.beak.bweibo.activity.common;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.res.AssetFileDescriptor;
+import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,6 +25,12 @@ import com.beak.bweibo.Finals;
 import com.beak.bweibo.R;
 import com.beak.bweibo.activity.ToolbarActivity;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileDescriptor;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.nio.charset.Charset;
 
 import butterknife.ButterKnife;
@@ -62,6 +70,8 @@ public class WebActivity extends ToolbarActivity {
             mProgressbar.setVisibility(View.GONE);
             isLoading = false;
         }
+
+
 
     };
 
@@ -103,6 +113,23 @@ public class WebActivity extends ToolbarActivity {
         mWebView.getSettings().setPluginState(WebSettings.PluginState.ON);
         mWebView.getSettings().setDefaultTextEncodingName("UTF-8");
         mWebView.loadUrl(url);
+
+        /*AssetManager assetManager = getAssets();
+        try {
+            //AssetFileDescriptor fileDescriptor = assetManager.openNonAssetFd("html" + File.separator + "load_failed.html");
+            InputStreamReader isr = new InputStreamReader(assetManager.open("html" + File.separator + "load_failed.html"));
+            BufferedReader br = new BufferedReader(isr);
+            String line = null;
+            StringBuilder htmlBuilder = new StringBuilder();
+            while ((line = br.readLine()) != null) {
+                htmlBuilder.append(line);
+            }
+            br.close();
+            Log.v(TAG, "html=" + htmlBuilder);
+            mWebView.loadData (htmlBuilder.toString(), "text/html", "utf-8");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
     }
 
     @Override

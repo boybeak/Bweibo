@@ -13,7 +13,8 @@ public enum DelegateType {
     STATUS_TEXT_REPOST (212, R.layout.layout_status_text_repost),
     STATUS_SINGLE_IMAGE_REPOST (216, R.layout.layout_status_single_image_repost),
     STATUS_MULTI_IMAGE_REPOST (220, R.layout.layout_status_multi_image_repost),
-    COMMENT_ (300, R.layout.layout_comment);
+    COMMENT(300, R.layout.layout_comment),
+    MENU_ITEM (400, R.layout.layout_menu_item);
 
     private int id;
     private @LayoutRes

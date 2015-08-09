@@ -139,23 +139,24 @@ public class StatusHolder extends AbsViewHolder<StatusDelegate> {
     private void fillStatusCommonPart(final Context context, final StatusDelegate delegate) {
         final Status status = delegate.getSource();
 
-        supportCountTv.setText(formatCount(status.getAttitudes_count()));
-        commentCountTv.setText(formatCount(status.getComments_count()));
-        repostCountTv.setText(formatCount(status.getReposts_count()));
+        supportCountTv.setText(formatCount(status.attitudes_count));
+        commentCountTv.setText(formatCount(status.comments_count));
+        repostCountTv.setText(formatCount(status.reposts_count));
 
     }
 
     protected void fillStatusImageViewPart (final Context context, ImageView imageView, final Thumbnail thumbnail) {
         //Picasso.with(context).load(thumbnail.getThumbnail_pic()).into(imageView);
-        DisplayManager.getInstance(context).getImageLoaderInstance().displayImage(
-                thumbnail.getBmiddle_pic(), imageView,
-                DisplayManager.getDefaultDisplayImageOptions(),
+        final DisplayManager displayManager = DisplayManager.getInstance(context);
+        displayManager.displayImage(
+                thumbnail.getBmiddle_pic(),
+                imageView,
                 new ImageLoadingListener() {
                     @Override
                     public void onLoadingStarted(String s, View view) {
                         ImageView iv = (ImageView) view;
                         iv.setImageDrawable(null);
-                        view.setBackgroundColor(context.getResources().getColor(R.color.colorBackgroundHint));
+                        view.setBackgroundColor(displayManager.getDefaultHintColor());
                     }
 
                     @Override
@@ -177,8 +178,8 @@ public class StatusHolder extends AbsViewHolder<StatusDelegate> {
                     @Override
                     public void onLoadingCancelled(String s, View view) {
                     }
-                }
-        );
+                });
+
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -198,8 +199,7 @@ public class StatusHolder extends AbsViewHolder<StatusDelegate> {
                 ImageView iv = (ImageView)gridLayout.getChildAt(i);
                 iv.setImageDrawable(null);
                 DisplayManager.getInstance(context)
-                        .getImageLoaderInstance()
-                        .displayImage(url, iv, DisplayManager.getDefaultDisplayImageOptions());
+                        .displayImage(url, iv);
                 iv.setVisibility(View.VISIBLE);
             } else if (i < childCount && i >= size) {
                 gridLayout.getChildAt(i).setVisibility(View.GONE);
@@ -207,8 +207,7 @@ public class StatusHolder extends AbsViewHolder<StatusDelegate> {
                 ImageView iv = (ImageView) LayoutInflater.from(context).inflate(R.layout.layout_gallery_image_item, null);
                 String url = thumbnails.get(i).getBmiddle_pic();
                 DisplayManager.getInstance(context)
-                        .getImageLoaderInstance()
-                        .displayImage(url, iv, DisplayManager.getDefaultDisplayImageOptions());
+                        .displayImage(url, iv);
                 gridLayout.addView(iv);
             }
             gridLayout.getChildAt(i).setOnClickListener(new View.OnClickListener() {

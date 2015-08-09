@@ -35,6 +35,7 @@ public class ImagePreviewActivity extends ToolbarActivity {
     ViewPager mPreviewViewPager = null;
 
     private ArrayList<Thumbnail> mThumbnails = null;
+    private int mIndex = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,9 +46,11 @@ public class ImagePreviewActivity extends ToolbarActivity {
 
 
         mThumbnails = getIntent().getParcelableArrayListExtra(Finals.KEY_IMAGE_LIST);
-
+        mIndex = getIntent().getIntExtra(Finals.KEY_INDEX, 0);
+        mPreviewViewPager.setOffscreenPageLimit(1);
         if (mThumbnails != null) {
             mPreviewViewPager.setAdapter(new PreviewAdapter(getSupportFragmentManager()));
+            mPreviewViewPager.setCurrentItem(mIndex);
         }
     }
 

@@ -22,6 +22,6 @@ public class StatusMultiImageHolder extends StatusHolder {
     @Override
     public void bindData(Context context, StatusDelegate delegate) {
         super.bindData(context, delegate);
-        fillStatusImageGridPart(context, imagesGridLayout, delegate.getSource().getPic_urls());
+        fillStatusImageGridPart(context, imagesGridLayout, delegate.getSource().pic_urls);
     }
 }

@@ -19,7 +19,7 @@ public class StatusDelegate extends BaseDelegate<Status>{
         super(status);
         mStatusSpannable = PatternUtils.translate(status.text);
         if (status.hasRetweetOne()) {
-            Status retweetOne = status.getRetweeted_status();
+            Status retweetOne = status.retweeted_status;
             if (retweetOne.user != null) {
                 mRepostStatusSpannable = PatternUtils.translate("@" + retweetOne.user.name + ":" + retweetOne.text);
             } else {
@@ -36,9 +36,9 @@ public class StatusDelegate extends BaseDelegate<Status>{
     @Override
     public DelegateType getDelegateType() {
         Status status = getSource();
-        if (status.getRetweeted_status() != null) {
+        if (status.retweeted_status != null) {
             Status repostStatus = status.retweeted_status;
-            List<Thumbnail> repostThumbnails = repostStatus.getPic_urls();
+            List<Thumbnail> repostThumbnails = repostStatus.pic_urls;
             if (repostThumbnails == null || repostThumbnails.isEmpty()) {
                 return DelegateType.STATUS_TEXT_REPOST;
             } else {
@@ -50,7 +50,7 @@ public class StatusDelegate extends BaseDelegate<Status>{
                 }
             }
         }
-        List<Thumbnail> thumbnails = status.getPic_urls();
+        List<Thumbnail> thumbnails = status.pic_urls;
         if (thumbnails == null || thumbnails.isEmpty()) {
             return DelegateType.STATUS_TEXT;
         } else {

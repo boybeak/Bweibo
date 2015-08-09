@@ -26,11 +26,11 @@ public class StatusManager extends BaseManager {
 
     private static final String TAG = StatusManager.class.getSimpleName();
 
-    public static final int
+    /*public static final int
         COMMENT_TYPE_NONE = 0,
         COMMENT_TYPE_TO_CURRENT = 1,
         COMMENT_TYPE_TO_ORIGINAL = 2,
-        COMMENT_TYPE_BOTH = 3;
+        COMMENT_TYPE_BOTH = 3;*/
 
     public static StatusManager sManager = null;
 

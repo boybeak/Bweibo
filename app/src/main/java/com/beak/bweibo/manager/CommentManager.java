@@ -40,6 +40,12 @@ public class CommentManager extends BaseManager {
                 .create(content, status.id, alsoToOriginal, listener);
     }
 
+    public void replyTo (Comment comment, String content, boolean withoutMention, CommentRequestListener listener) {
+        ApiManager.getInstance(getContext())
+                .getCommentsApiInstance()
+                .reply(comment.id, comment.status.id, content, withoutMention, false, listener);
+    }
+
     public static class CommentRequestListener extends AutoDraftListener<Comment> {
 
         public CommentRequestListener(Context context, boolean debug) {

@@ -12,12 +12,12 @@ public class CommentDelegate extends BaseDelegate<Comment> {
 
     public CommentDelegate(Comment comment) {
         super(comment);
-        mSpannable = PatternUtils.translate(comment.getText());
+        mSpannable = PatternUtils.translate(comment.text);
     }
 
     @Override
     public DelegateType getDelegateType() {
-        return DelegateType.COMMENT_;
+        return DelegateType.COMMENT;
     }
 
     public CharSequence getSpnnable () {

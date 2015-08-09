@@ -56,7 +56,7 @@ public abstract class DelegateAdapter extends RecyclerView.Adapter<AbsViewHolder
 //            case STATUS_MULTI_IMAGE_REPOST:
 //                holder = new StatusMultiImageRepostHolder(view);
 //                break;
-//            case COMMENT_:
+//            case COMMENT:
 //                holder = new CommentHolder(view);
 //                break;
 //            case SYSTEM_LIST_FOOTER:
@@ -84,7 +84,7 @@ public abstract class DelegateAdapter extends RecyclerView.Adapter<AbsViewHolder
 //                StatusHolder statusHolder = (StatusHolder)holder;
 //                statusHolder.bindData(mContext, delegate);
 //                break;
-//            case COMMENT_:
+//            case COMMENT:
 //                CommentHolder commentHolder = (CommentHolder)holder;
 //                CommentDelegate commentDelegate = (CommentDelegate)getDataItem(position);
 //                commentHolder.bindData(mContext, commentDelegate);

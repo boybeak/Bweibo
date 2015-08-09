@@ -29,7 +29,7 @@ public class StatusGalleryHolder extends StatusHolder {
     public void bindData(Context context, StatusDelegate delegate) {
         super.bindData(context, delegate);
         //if (mAdapter == null) {
-            mAdapter = new ThumbnailAdapter(context, delegate.getSource().getPic_urls());
+            mAdapter = new ThumbnailAdapter(context, delegate.getSource().pic_urls);
         //}
         galleryRv.setAdapter(mAdapter);
     }

@@ -5,15 +5,14 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.beak.bweibo.R;
-import com.beak.bweibo.activity.ToolbarActivity;
 import com.beak.bweibo.manager.common.CacheDirManager;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.exception.HttpException;
@@ -33,17 +32,18 @@ import uk.co.senab.photoview.PhotoViewAttacher;
  * Created by gaoyunfei on 15/7/8.
  */
 public class ImagePreviewFragment extends Fragment implements
-        PhotoViewAttacher.OnViewTapListener,
-        PhotoViewAttacher.OnPhotoTapListener{
+        PhotoViewAttacher.OnViewTapListener{
 
     private static final String TAG = ImagePreviewFragment.class.getSimpleName();
 
     @InjectView(R.id.preview_image)
-    PhotoView mPreviewPv = null;
+    PhotoView mPreviewIv = null;
     @InjectView(R.id.preview_loading_progress_bar)
     ProgressBar mPreviewProgressBar;
     @InjectView(R.id.preview_loading_tip)
     TextView mPreviewTip;
+
+    //private PhotoViewAttacher mAttacher = null;
 
     private File mBmpFile = null;
 
@@ -62,8 +62,9 @@ public class ImagePreviewFragment extends Fragment implements
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.inject(this, view);
 
-        mPreviewPv.setOnViewTapListener(this);
-        mPreviewPv.setOnPhotoTapListener(this);
+//        mAttacher = new PhotoViewAttacher(mPreviewIv);
+//        mAttacher.setOnViewTapListener(this);
+        mPreviewIv.setOnViewTapListener(this);
 
         if (mBmpFile != null) {
             displayImage(mBmpFile);
@@ -127,8 +128,8 @@ public class ImagePreviewFragment extends Fragment implements
             Bitmap bmp = BitmapFactory.decodeFile(file.getAbsolutePath());
             mBmpWeakRef = new WeakReference<Bitmap>(bmp);
         }
-        if (mPreviewPv != null) {
-            mPreviewPv.setImageBitmap(mBmpWeakRef.get());
+        if (mPreviewIv != null) {
+            mPreviewIv.setImageBitmap(mBmpWeakRef.get());
         }
     }
 
@@ -140,7 +141,7 @@ public class ImagePreviewFragment extends Fragment implements
         }
     }
 
-    @Override
+    /*@Override
     public void onPhotoTap(View view, float x, float y) {
         if (getActivity() instanceof ToolbarActivity) {
             Toolbar toolbar = ((ToolbarActivity) getActivity()).getToolbar();
@@ -150,7 +151,7 @@ public class ImagePreviewFragment extends Fragment implements
                 toolbar.setVisibility(View.VISIBLE);
             }
         }
-    }
+    }*/
 
     @Override
     public void onViewTap(View view, float x, float y) {

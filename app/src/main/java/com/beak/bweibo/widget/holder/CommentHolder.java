@@ -35,8 +35,8 @@ public class CommentHolder extends AbsViewHolder<CommentDelegate> {
 
     @Override
     public void bindData(final Context context, CommentDelegate commentDelegate) {
-        Comment comment = commentDelegate.getSource();
-        final User user = comment.getUser();
+        final Comment comment = commentDelegate.getSource();
+        final User user = comment.user;
         DisplayManager.getInstance(context).displayRoundImage(
                 user.avatar_hd,
                 context.getResources().getDimensionPixelSize(R.dimen.profile_size_in_list),
@@ -44,7 +44,7 @@ public class CommentHolder extends AbsViewHolder<CommentDelegate> {
                 DefaultImageLoadingListener.getInstance());
         nameTv.setText(user.name);
         timeTv.setText(DateHelper.formatDateForStatus(context, comment.created_at));
-        supportCountTv.setText(comment.getFloor_num() + "");
+        supportCountTv.setText(comment.floor_num + "");
         commentTextTv.setText(commentDelegate.getSpnnable());
         commentTextTv.setMovementMethod(LinkMovementMethod.getInstance());
         profileIv.setOnClickListener(new View.OnClickListener() {
@@ -53,12 +53,14 @@ public class CommentHolder extends AbsViewHolder<CommentDelegate> {
                 ActivityDispatcher.userActivity(context, user);
             }
         });
-        itemView.setOnClickListener(new View.OnClickListener() {
+        View.OnClickListener listener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                ActivityDispatcher.commentActivity(context, comment);
             }
-        });
+        };
+        commentTextTv.setOnClickListener(listener);
+        itemView.setOnClickListener(listener);
     }
 
 }

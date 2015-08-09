@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.beak.beakkit.debug.Debug;
 import com.beak.beakkit.manager.media.DisplayManager;
 import com.beak.bweibo.DefaultRequestListener;
 import com.beak.bweibo.R;
@@ -18,7 +17,7 @@ import com.beak.bweibo.Result;
 import com.beak.bweibo.manager.StatusManager;
 import com.beak.bweibo.manager.UserManager;
 import com.beak.bweibo.widget.adapter.StatusAdapter;
-import com.beak.bweibo.widget.adapter.StatusDecoration;
+import com.beak.bweibo.widget.decoration.StatusDecoration;
 import com.beak.bweibo.widget.delegate.StatusDelegate;
 import com.sina.weibo.sdk.openapi.models.Status;
 import com.sina.weibo.sdk.openapi.models.StatusList;

@@ -1,4 +1,4 @@
-package com.beak.bweibo.widget.adapter;
+package com.beak.bweibo.widget.decoration;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -7,6 +7,7 @@ import android.graphics.Rect;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.beak.beakkit.utils.UiUtils;
 import com.beak.bweibo.R;
 
 /**
@@ -14,7 +15,7 @@ import com.beak.bweibo.R;
  */
 public class CommentDecoration extends RecyclerView.ItemDecoration {
 
-    private int left, top, right, bottom;
+    private int left, top, right, bottom, header;
 
     public CommentDecoration(Context context) {
         Resources resources = context.getResources();
@@ -22,6 +23,7 @@ public class CommentDecoration extends RecyclerView.ItemDecoration {
         top = resources.getDimensionPixelSize(R.dimen.comment_item_margin_top);
         right = resources.getDimensionPixelSize(R.dimen.comment_item_margin_right);
         bottom = resources.getDimensionPixelSize(R.dimen.comment_item_margin_bottom);
+        header = UiUtils.getActionBarHeight(context);
     }
 
     @Override
@@ -37,6 +39,15 @@ public class CommentDecoration extends RecyclerView.ItemDecoration {
     @Override
     public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
         super.getItemOffsets(outRect, view, parent, state);
-        outRect.set(left, top, right, bottom);
+        RecyclerView.Adapter adapter = parent.getAdapter();
+        if (adapter == null) {
+            return;
+        }
+        int position = parent.getChildAdapterPosition(view);
+        if (position == 0) {
+            outRect.set(left, top + header, right, bottom);
+        } else {
+            outRect.set(left, top, right, bottom);
+        }
     }
 }

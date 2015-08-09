@@ -16,6 +16,9 @@
 
 package com.sina.weibo.sdk.openapi.models;
 
+import com.beak.bweibo.fragment.SummaryFragment;
+import com.beak.bweibo.utils.PatternUtils;
+
 import org.json.JSONObject;
 
 import java.io.Serializable;
@@ -27,7 +30,7 @@ import java.util.Date;
  * @author SINA
  * @since 2013-11-24
  */
-public class Comment implements Serializable {
+public class Comment implements Serializable, SummaryFragment.SummaryProvider{
 
     /** 评论创建时间 */
     public Date created_at;
@@ -70,83 +73,23 @@ public class Comment implements Serializable {
         return comment;
     }
 
-    public Date getCreated_at() {
-        return created_at;
+    @Override
+    public CharSequence getTitle() {
+        return PatternUtils.translate("@" + user.name + ":" + text);
     }
 
-    public void setCreated_at(Date created_at) {
-        this.created_at = created_at;
+    @Override
+    public CharSequence getSubTitle() {
+        return null;
     }
 
-    public long getId() {
-        return id;
+    @Override
+    public CharSequence getContent() {
+        return null;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
-
-    public String getSource() {
-        return source;
-    }
-
-    public void setSource(String source) {
-        this.source = source;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public String getMid() {
-        return mid;
-    }
-
-    public void setMid(String mid) {
-        this.mid = mid;
-    }
-
-    public String getIdstr() {
-        return idstr;
-    }
-
-    public void setIdstr(String idstr) {
-        this.idstr = idstr;
-    }
-
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
-    }
-
-    public Comment getReply_comment() {
-        return reply_comment;
-    }
-
-    public void setReply_comment(Comment reply_comment) {
-        this.reply_comment = reply_comment;
-    }
-
-    public int getFloor_num() {
-        return floor_num;
-    }
-
-    public void setFloor_num(int floor_num) {
-        this.floor_num = floor_num;
+    @Override
+    public String getThumbnailProfile() {
+        return null;
     }
 }

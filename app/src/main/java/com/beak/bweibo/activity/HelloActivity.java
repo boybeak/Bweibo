@@ -19,7 +19,7 @@ import com.sina.weibo.sdk.auth.sso.SsoHandler;
 import com.sina.weibo.sdk.exception.WeiboException;
 
 
-public class HelloActivity extends AppCompatActivity implements WeiboAuthListener {
+public class HelloActivity extends BaseActivity implements WeiboAuthListener {
 
     private static final String TAG = HelloActivity.class.getSimpleName();
 

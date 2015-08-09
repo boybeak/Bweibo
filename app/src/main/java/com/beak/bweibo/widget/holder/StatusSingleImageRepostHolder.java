@@ -28,8 +28,8 @@ public class StatusSingleImageRepostHolder extends StatusRepostHolder {
     public void bindData(Context context, StatusDelegate delegate) {
         super.bindData(context, delegate);
         Status source = delegate.getSource();
-        rePostTextTv.setText(source.getRetweeted_status().getText());
-        List<Thumbnail> repostThums = source.getRetweeted_status().getPic_urls();
+        rePostTextTv.setText(source.retweeted_status.text);
+        List<Thumbnail> repostThums = source.retweeted_status.pic_urls;
         fillStatusImageViewPart(context, repostSingleImageIv, repostThums.get(0));
     }
 }

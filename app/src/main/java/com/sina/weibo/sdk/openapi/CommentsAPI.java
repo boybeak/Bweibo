@@ -79,7 +79,7 @@ public class CommentsAPI extends AbsOpenAPI {
     /**
      * 构造函数，使用各个 API 接口提供的服务前必须先获取 Token。
      * 
-     * @param accesssToken 访问令牌
+     * @param accessToken 访问令牌
      */
 	public CommentsAPI(Context context, String appKey, Oauth2AccessToken accessToken) {
         super(context, appKey, accessToken);

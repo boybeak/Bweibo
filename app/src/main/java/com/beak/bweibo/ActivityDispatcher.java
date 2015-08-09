@@ -14,12 +14,12 @@ import com.beak.bweibo.activity.UserActivity;
 import com.beak.bweibo.activity.common.ImagePreviewActivity;
 import com.beak.bweibo.activity.common.ImageSelectActivity;
 import com.beak.bweibo.activity.common.WebActivity;
+import com.sina.weibo.sdk.openapi.models.Comment;
 import com.sina.weibo.sdk.openapi.models.Status;
 import com.sina.weibo.sdk.openapi.models.Thumbnail;
 import com.sina.weibo.sdk.openapi.models.User;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by gaoyunfei on 15/5/23.
@@ -112,6 +112,13 @@ public class ActivityDispatcher {
         Intent it = new Intent(context, PublishActivity.class);
         it.putExtra(Finals.KEY_PUBLISH_MODE, PublishActivity.PUBLISH_MODE_COMMENT);
         it.putExtra(Finals.KEY_STATUS, status);
+        context.startActivity(it);
+    }
+
+    public static void commentActivity (Context context, Comment comment) {
+        Intent it = new Intent (context, PublishActivity.class);
+        it.putExtra(Finals.KEY_COMMENT, comment);
+        it.putExtra(Finals.KEY_PUBLISH_MODE, PublishActivity.PUBLISH_MODE_REPLY_TO_COMMENT);
         context.startActivity(it);
     }
 

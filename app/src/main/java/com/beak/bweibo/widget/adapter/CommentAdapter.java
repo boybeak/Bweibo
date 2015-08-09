@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.beak.bweibo.widget.delegate.AbsDelegate;
 import com.beak.bweibo.widget.delegate.DelegateType;
 import com.beak.bweibo.widget.holder.AbsViewHolder;
 import com.beak.bweibo.widget.holder.CommentHolder;
@@ -20,7 +19,7 @@ public class CommentAdapter extends StatusAdapter {
 
     @Override
     public AbsViewHolder onCreateAbsViewHolder(ViewGroup parent, int viewType, DelegateType delegateType, View view) {
-        if (delegateType == DelegateType.COMMENT_) {
+        if (delegateType == DelegateType.COMMENT) {
             return new CommentHolder(view);
         }
         return super.onCreateAbsViewHolder(parent, viewType, delegateType, view);

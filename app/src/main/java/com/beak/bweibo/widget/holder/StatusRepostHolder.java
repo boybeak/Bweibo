@@ -36,7 +36,7 @@ public class StatusRepostHolder extends StatusHolder {
     public void bindData(final Context context, StatusDelegate delegate) {
         super.bindData(context, delegate);
         mStatusListener = new StatusListener(delegate);
-        final Status retweetedStatus = delegate.getSource().getRetweeted_status();
+        final Status retweetedStatus = delegate.getSource().retweeted_status;
         /*User retweetedUser = retweetedStatus.user;
         if (retweetedUser != null) {*/
             rePostTextTv.setText(delegate.getRepostStatusSpannable());

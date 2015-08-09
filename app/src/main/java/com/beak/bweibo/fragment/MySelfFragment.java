@@ -7,7 +7,12 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.graphics.Palette;
+import android.support.v7.internal.view.menu.MenuBuilder;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,9 +26,16 @@ import com.beak.bweibo.DefaultImageLoadingListener;
 import com.beak.bweibo.R;
 import com.beak.bweibo.activity.DraftActivity;
 import com.beak.bweibo.manager.UserManager;
+import com.beak.bweibo.widget.adapter.MenuAdapter;
+import com.beak.bweibo.widget.decoration.LinnerOffsetDecoration;
+import com.beak.bweibo.widget.decoration.MenuItemDecoration;
+import com.beak.bweibo.widget.delegate.MenuItemDelegate;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import com.sina.weibo.sdk.openapi.models.User;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -31,7 +43,7 @@ import butterknife.InjectView;
 /**
  * Created by gaoyunfei on 15/6/15.
  */
-public class MySelfFragment extends Fragment implements UserManager.OnMyselfPrepareCallback, NavigationView.OnNavigationItemSelectedListener{
+public class MySelfFragment extends Fragment implements UserManager.OnMyselfPrepareCallback {
 
     private static final String TAG = MySelfFragment.class.getSimpleName();
 
@@ -41,7 +53,12 @@ public class MySelfFragment extends Fragment implements UserManager.OnMyselfPrep
     @InjectView(R.id.header_location) TextView mHeaderLocationTv = null;
     @InjectView(R.id.header_desc) TextView mHaaderDescTv = null;
 
-    @InjectView(R.id.myself_navigationview) NavigationView mNavigationView = null;
+    @InjectView(R.id.myself_recycler_view)
+    RecyclerView mMySelfRv = null;
+
+    private MenuAdapter mMenuAdapter = null;
+
+    private MenuItem.OnMenuItemClickListener mMenuListener = null;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -61,11 +78,42 @@ public class MySelfFragment extends Fragment implements UserManager.OnMyselfPrep
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.inject(this, view);
 
-        mNavigationView.setNavigationItemSelectedListener(this);
+        mMySelfRv.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mMenuAdapter = new MenuAdapter(getActivity());
+        mMySelfRv.setAdapter(mMenuAdapter);
+        final int headerOffset = getResources().getDimensionPixelSize(R.dimen.myself_header_height);
+        mMySelfRv.addItemDecoration(
+                new LinnerOffsetDecoration(headerOffset, 0, 0, 0, 0, 0)
+        );
+        mMySelfRv.addItemDecoration(new MenuItemDecoration());
+
+        generateMenu();
+
         User mySelf = UserManager.getInstance(getActivity()).getMySelf();
         if (mySelf != null) {
             fillUser(mySelf);
         }
+    }
+
+    private void generateMenu () {
+        MenuBuilder menuBuilder = new MenuBuilder(getActivity());
+        new MenuInflater(getActivity()).inflate(R.menu.menu_myself, menuBuilder);
+        final int length = menuBuilder.size();
+        List<MenuItemDelegate> itemDelegateList = new ArrayList<MenuItemDelegate>();
+        for (int i = 0; i < length; i++) {
+            itemDelegateList.add(new MenuItemDelegate(menuBuilder.getItem(i)));
+        }
+        mMenuAdapter.addDataList(itemDelegateList);
+        mMenuAdapter.notifyDataSetChanged();
+        mMenuAdapter.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                if (mMenuListener != null) {
+                    return mMenuListener.onMenuItemClick(item);
+                }
+                return false;
+            }
+        });
     }
 
     @Override
@@ -140,13 +188,8 @@ public class MySelfFragment extends Fragment implements UserManager.OnMyselfPrep
         });
     }
 
-    @Override
-    public boolean onNavigationItemSelected(MenuItem menuItem) {
-        switch (menuItem.getItemId()) {
-            case R.id.navigation_draft:
-                startActivity(new Intent(getActivity(), DraftActivity.class));
-                break;
-        }
-        return false;
+    public void setOnMenuItemClickListener (MenuItem.OnMenuItemClickListener listener) {
+        mMenuListener = listener;
     }
+
 }

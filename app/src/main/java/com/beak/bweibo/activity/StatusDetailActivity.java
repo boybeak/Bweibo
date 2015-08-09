@@ -6,7 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
+import android.view.View;
 
 import com.beak.bweibo.DefaultRequestListener;
 import com.beak.bweibo.Finals;
@@ -16,7 +16,8 @@ import com.beak.bweibo.manager.CommentManager;
 import com.beak.bweibo.manager.StatusManager;
 import com.beak.bweibo.openapi.models.FooterState;
 import com.beak.bweibo.widget.adapter.CommentAdapter;
-import com.beak.bweibo.widget.adapter.CommentDecoration;
+import com.beak.bweibo.widget.callback.TopTrackListener;
+import com.beak.bweibo.widget.decoration.CommentDecoration;
 import com.beak.bweibo.widget.callback.OnScrollBottomListener;
 import com.beak.bweibo.widget.delegate.CommentDelegate;
 import com.beak.bweibo.widget.delegate.StatusDelegate;
@@ -49,13 +50,12 @@ public class StatusDetailActivity extends ToolbarActivity {
 
     private OnScrollBottomListener mBottomListener = new OnScrollBottomListener() {
         @Override
-        public void onScrollBottom(RecyclerView recyclerView) {
-
+        public void onScrollBottom(RecyclerView recyclerView, int newState) {
             if (!isLoading) {
                 loadData(mNextCursor);
             }
-
         }
+
     };
 
     @Override
@@ -71,11 +71,24 @@ public class StatusDetailActivity extends ToolbarActivity {
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.addItemDecoration(new CommentDecoration(this));
+        mRecyclerView.addOnScrollListener(new TopTrackListener(getToolbar()));
         mRecyclerView.setOnScrollListener(mBottomListener);
+
+        getToolbar().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mRecyclerView.smoothScrollToPosition(0);
+            }
+        });
     }
 
     @Override
     public boolean isHomeAsUpEnable() {
+        return true;
+    }
+
+    @Override
+    public boolean isToolbarOverlay() {
         return true;
     }
 

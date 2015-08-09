@@ -34,7 +34,7 @@ public class StatusSingleImageHolder extends StatusHolder {
     public void bindData(Context context, StatusDelegate delegate) {
         super.bindData(context, delegate);
         Status singleImgStatus = delegate.getSource();
-        List<Thumbnail> thumbnails = singleImgStatus.getPic_urls();
+        List<Thumbnail> thumbnails = singleImgStatus.pic_urls;
         fillStatusImageViewPart(context, singleImageIv, thumbnails.get(0));
     }
 

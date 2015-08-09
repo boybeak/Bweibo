@@ -7,20 +7,22 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.beak.beakkit.utils.UiUtils;
 import com.beak.bweibo.DefaultRequestListener;
 import com.beak.bweibo.R;
 import com.beak.bweibo.Result;
 import com.beak.bweibo.activity.PublishActivity;
-import com.beak.bweibo.manager.BaseManager;
 import com.beak.bweibo.manager.StatusManager;
 import com.beak.bweibo.openapi.models.FooterState;
 import com.beak.bweibo.widget.adapter.StatusAdapter;
-import com.beak.bweibo.widget.adapter.StatusDecoration;
+import com.beak.bweibo.widget.decoration.StatusDecoration;
+import com.beak.bweibo.widget.callback.BottomTrackListener;
+import com.beak.bweibo.widget.callback.TopTrackListener;
 import com.beak.bweibo.widget.callback.OnScrollBottomListener;
 import com.beak.bweibo.widget.delegate.StatusDelegate;
 import com.sina.weibo.sdk.openapi.models.Status;
@@ -28,6 +30,9 @@ import com.sina.weibo.sdk.openapi.models.StatusList;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 
 import static android.support.v7.widget.RecyclerView.*;
 
@@ -38,9 +43,17 @@ public class StatusListFragment extends Fragment implements SwipeRefreshLayout.O
 
     private static final String TAG = StatusListFragment.class.getSimpleName();
 
-    private SwipeRefreshLayout mRefreshLayout = null;
-    private RecyclerView mRecyclerView = null;
-    private FloatingActionButton mActionBtn = null;
+    @InjectView(R.id.status_list_swipe_refresh_layout)
+    SwipeRefreshLayout mRefreshLayout = null;
+
+    @InjectView(R.id.main_tool_bar)
+    Toolbar mMainToolbar = null;
+
+    @InjectView(R.id.status_list_recycler_view)
+    RecyclerView mRecyclerView = null;
+
+    @InjectView(R.id.status_list_publish_btn)
+    FloatingActionButton mActionBtn = null;
 
     private LinearLayoutManager mLinearManager = null;
 
@@ -52,11 +65,12 @@ public class StatusListFragment extends Fragment implements SwipeRefreshLayout.O
 
     private OnScrollBottomListener mBottomListener = new OnScrollBottomListener() {
         @Override
-        public void onScrollBottom(RecyclerView recyclerView) {
+        public void onScrollBottom(RecyclerView recyclerView, int newState) {
             if (!isLoading) {
                 loadData(/*mIndex + 1*/mLastStatusId);
             }
         }
+
     };
 
     @Override
@@ -74,9 +88,7 @@ public class StatusListFragment extends Fragment implements SwipeRefreshLayout.O
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mRecyclerView = (RecyclerView)view.findViewById(R.id.status_list_recycler_view);
-        mRefreshLayout = (SwipeRefreshLayout)view.findViewById(R.id.status_list_swipe_refresh_layout);
-        mActionBtn = (FloatingActionButton)view.findViewById(R.id.status_list_publish_btn);
+        ButterKnife.inject(this, view);
 
         mRefreshLayout.setColorSchemeResources(
                 android.R.color.holo_blue_light,
@@ -85,12 +97,17 @@ public class StatusListFragment extends Fragment implements SwipeRefreshLayout.O
                 android.R.color.holo_red_light
         );
 
+        final int actionBarHeight = UiUtils.getActionBarHeight(getActivity());
+        mRefreshLayout.setProgressViewOffset(false, actionBarHeight, actionBarHeight * 2);
+
         mLinearManager = new LinearLayoutManager(getActivity());
 
         mRecyclerView.setLayoutManager(mLinearManager);
         //mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setAdapter(mAdapter);
-        mRecyclerView.setOnScrollListener(mBottomListener);
+        mRecyclerView.addOnScrollListener(mBottomListener);
+        mRecyclerView.addOnScrollListener(new TopTrackListener(mMainToolbar));
+        mRecyclerView.addOnScrollListener(new BottomTrackListener(mActionBtn));
         mRecyclerView.addItemDecoration(new StatusDecoration(getActivity()));
         //mRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
@@ -187,5 +204,9 @@ public class StatusListFragment extends Fragment implements SwipeRefreshLayout.O
     @Override
     public void onStatusRemoved(String callbackId, Status status) {
 
+    }
+
+    public Toolbar getToolbar () {
+        return mMainToolbar;
     }
 }

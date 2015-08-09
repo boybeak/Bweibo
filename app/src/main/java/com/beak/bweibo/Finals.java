@@ -7,6 +7,7 @@ public class Finals {
     public static final String
             KEY_ID = "id",
             KEY_STATUS = "status",
+            KEY_COMMENT = "comment",
             KEY_UID = "uid",
             KEY_USER = "user",
             KEY_URL = "url",
